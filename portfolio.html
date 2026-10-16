@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JORSGA PHOTO</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="nav">
+    <nav class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+    </nav>
+
+    <a class="logo" href="index.html">JORSAGA PHOTO</a>
+
+    <nav class="nav-right">
+      <a href="investment.html">Investment</a>
+      <a href="experiment.html">Experiment</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section id="portfolio" class="portfolio">
+
+    <div class="portfolio-item">
+      <div class="portfolio-text">
+        <h3>I. Cosplay</h3>
+      </div>
+
+      <div class="portfolio-card cosplay slideshow">
+        <img src="images/cosplay-1.jpg" alt="Cosplay photography">
+        <img src="images/cosplay-2.jpg" alt="Cosplay photography">
+        <img src="images/cosplay-3.jpg" alt="Cosplay photography">
+        <img src="images/cosplay-4.jpg" alt="Cosplay photography">
+      </div>
+    </div>
+
+
+    <div class="portfolio-item">
+      <div class="portfolio-text">
+        <h3>II. Chinese Culture</h3>
+      </div>
+
+      <div class="portfolio-card chinese-culture slideshow">
+        <img src="images/chinese-culture-1.jpg" alt="Chinese culture photography">
+        <img src="images/chinese-culture-2.jpg" alt="Chinese culture photography">
+        <img src="images/chinese-culture-3.jpg" alt="Chinese culture photography">
+        <img src="images/chinese-culture-4.jpg" alt="Chinese culture photography">
+      </div>
+    </div>
+
+
+    <div class="portfolio-item">
+      <div class="portfolio-text">
+        <h3>III. Portrait</h3>
+      </div>
+
+      <div class="portfolio-card portrait slideshow">
+        <img src="images/portrait-1.jpg" alt="Portrait photography">
+        <img src="images/portrait-2.jpg" alt="Portrait photography">
+        <img src="images/portrait-3.jpg" alt="Portrait photography">
+        <img src="images/portrait-4.jpg" alt="Portrait photography">
+      </div>
+    </div>
+
+
+    <div class="portfolio-item">
+      <div class="portfolio-text">
+        <h3>IV. Vintage</h3>
+      </div>
+
+      <div class="portfolio-card vintage slideshow">
+        <img src="images/vintage-1.jpg" alt="Vintage photography">
+        <img src="images/vintage-2.jpg" alt="Vintage photography">
+        <img src="images/vintage-3.jpg" alt="Vintage photography">
+        <img src="images/vintage-4.jpg" alt="Vintage photography">
+      </div>
+    </div>
+
+    <div class="portfolio-grid">
+      <!-- Your four portfolio items -->
+    </div>
+
+    <p class="portfolio-instruction">
+      Explore the collections — hover over an image to view the slideshow.
+    </p>
+  </section>
+
+  <footer>
+
+    <div class="footer-decoration">
+      <span>✦</span>
+    </div>
+
+    <div class="footer-links">
+
+      <a href="#home">Back to Top</a>
+
+      <a href="#contact">Contact</a>
+
+      <a href="#">FAQ</a>
+
+    </div>
+
+  </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="https://malsup.github.io/jquery.cycle2.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      $(".slideshow").cycle({
+        fx: "fade",
+        timeout: 1000,
+        speed: 700,
+        paused: true
+      });
+
+      $(".slideshow").hover(
+        function () {
+          $(this).cycle("resume");
+        },
+        function () {
+          $(this).cycle("pause");
+        }
+      );
+
+    });
+  </script>
+</body>
+
+</html>

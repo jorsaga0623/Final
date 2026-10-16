@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JORSGA PHOTO</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="nav">
+        <nav class="nav-left">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+        </nav>
+
+        <a class="logo" href="index.html">JORSAGA PHOTO</a>
+
+        <nav class="nav-right">
+            <a href="investment.html">Investment</a>
+            <a href="experiment.html">Experiment</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>Captured your moment in light.</h1>
+            <a class="button" href="#portfolio">Explore the work</a>
+        </div>
+    </section>
+
+    <section class="parallax-section">
+
+        <div class="parallax-image"></div>
+
+    </section>
+
+    <footer>
+
+        <div class="footer-decoration">
+            <span>✦</span>
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#home">Back to Top</a>
+
+            <a href="#contact">Contact</a>
+
+            <a href="#">FAQ</a>
+
+        </div>
+
+    </footer>
+
+    <script>
+        window.addEventListener("scroll", function () {
+
+            const image = document.querySelector(".parallax-image");
+            const section = document.querySelector(".parallax-section");
+
+            const sectionTop = section.offsetTop;
+            const scrollPosition = window.scrollY;
+
+            const movement = (scrollPosition - sectionTop) * 0.15;
+
+            image.style.transform = `translateY(${movement}px)`;
+
+        });
+    </script>
+
+</body>
+
+</html>
