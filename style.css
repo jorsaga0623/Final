@@ -2170,8 +2170,13 @@ body:has(.about-page) {
     gap: 12px 20px;
   }
 
-  .nav .nav-left { grid-row: 2; }
-  .nav .nav-right { grid-row: 3; }
+  .nav .nav-left {
+    grid-row: 2;
+  }
+
+  .nav .nav-right {
+    grid-row: 3;
+  }
 
   .nav nav {
     font-size: 11px;
@@ -2236,7 +2241,7 @@ body:has(.about-page) {
     padding: 35px 25px;
   }
 
-  .investment-page > .service-section {
+  .investment-page>.service-section {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2264,6 +2269,7 @@ body:has(.about-page) {
 
 /* 2. MOBILE PHONES */
 @media screen and (max-width: 767px) {
+
   html,
   body {
     width: 100%;
@@ -2453,7 +2459,7 @@ body:has(.about-page) {
     padding: 100px 6% 55px;
   }
 
-  .investment-page > .service-section {
+  .investment-page>.service-section {
     grid-template-columns: 1fr;
     gap: 35px;
   }
@@ -2596,7 +2602,7 @@ body:has(.about-page) {
     font-size: clamp(32px, 8vw, 42px);
   }
 
-  .experiment-page .experiment-feature-text > p:not(.experiment-section-label):not(.experiment-side-note) {
+  .experiment-page .experiment-feature-text>p:not(.experiment-section-label):not(.experiment-side-note) {
     font-size: 17px;
   }
 
@@ -2704,5 +2710,156 @@ body:has(.about-page) {
 
   .contact-page .contact-card h1 {
     font-size: 38px;
+  }
+}
+
+/* ==========================================
+   NAVIGATION — DESKTOP + TABLET + MOBILE
+   Keep this block at the very bottom
+========================================== */
+
+/* Desktop: original left / center / right layout */
+.menu-toggle {
+  display: none;
+}
+
+@media screen and (min-width: 1025px) {
+  .nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
+  .nav .nav-left {
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: flex-start;
+  }
+
+  .nav .logo {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  .nav .nav-right {
+    grid-column: 3;
+    grid-row: 1;
+    justify-content: flex-end;
+  }
+
+  .nav .mobile-navigation {
+    display: contents;
+  }
+
+  .nav .menu-toggle {
+    display: none;
+  }
+}
+
+/* iPad and phones: logo on left, menu button on right */
+@media screen and (max-width: 1024px) {
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0;
+    padding: 18px 5%;
+  }
+
+  .nav .logo {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    font-size: 22px;
+  }
+
+  .nav .menu-toggle {
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    line-height: 1;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .nav .mobile-navigation {
+    display: none;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    margin-top: 15px;
+    padding: 20px;
+    background: #F4F0E8;
+    color: #454438;
+  }
+
+  .nav.menu-open .mobile-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .nav .mobile-navigation nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .nav .mobile-navigation nav a {
+    color: #454438;
+  }
+
+  /* Dropdown menu on small screens */
+  .nav .mobile-navigation .dropdown-menu {
+    position: static;
+    display: none;
+    min-width: 0;
+    margin: 10px 0 0 12px;
+    padding: 0;
+    background: transparent;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav .mobile-navigation .nav-dropdown:hover .dropdown-menu,
+  .nav .mobile-navigation .nav-dropdown:focus-within .dropdown-menu {
+    display: block;
+  }
+
+  .nav .mobile-navigation .dropdown-menu a {
+    padding: 10px 0;
+    color: #454438;
+  }
+}
+
+/* Smaller phones */
+@media screen and (max-width: 480px) {
+  .nav {
+    padding: 14px 16px;
+  }
+
+  .nav .logo {
+    font-size: 18px;
+  }
+
+  .nav .menu-toggle {
+    font-size: 27px;
   }
 }
