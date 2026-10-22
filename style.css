@@ -76,7 +76,89 @@ a {
 }
 
 .nav nav a:hover {
-  color: #000770
+  color: #3c2303
+}
+
+/* Portfolio dropdown menu */
+
+.nav-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-dropdown-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-arrow {
+  font-size: 13px;
+  transition: transform 0.25s ease;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -14px;
+  min-width: 190px;
+  padding: 10px 0;
+  margin-top: 12px;
+
+  background: #F4F0E8;
+  color: #454438;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease,
+    visibility 0.25s ease;
+
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 13px 18px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  text-transform: none;
+  color: #454438;
+  transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #E5E0D3;
+  padding-left: 24px;
+  color: #454438;
+}
+
+/* Show menu on hover or keyboard focus */
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Mobile-friendly dropdown interaction */
+
+@media screen and (max-width: 767px) {
+  .dropdown-menu {
+    min-width: 155px;
+  }
+
+  .dropdown-menu a {
+    padding: 12px;
+    font-size: 11px;
+  }
 }
 
 .hero {
@@ -695,5 +777,1284 @@ footer {
   .investment-page .note-row {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+}
+
+/* Background for the standalone About page */
+
+body:has(.about-page) {
+  background-color: #BFBBA2;
+}
+
+.about-page {
+  background-color: #BFBBA2;
+}
+
+/* Black navigation text on Portfolio page */
+.portfolio-nav,
+.portfolio-nav nav a,
+.portfolio-nav .logo {
+  color: #000000;
+}
+
+/* Hover color */
+.portfolio-nav nav a:hover {
+  color: #777363;
+}
+
+/* Cosplay page navigation */
+.cosplay-nav,
+.cosplay-nav nav a,
+.cosplay-nav .logo {
+  color: #ffff;
+}
+
+.cosplay-nav nav a:hover {
+  color: #777363;
+}
+
+/* Portfolio page heading */
+
+.portfolio-page {
+  width: 100%;
+  padding-top: 140px;
+}
+
+.portfolio-heading {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 35px;
+}
+
+.portfolio-heading h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.portfolio-heading p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+}
+
+/* ===== Portfolio Cover Flow Carousel ===== */
+
+.photo-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 540px;
+  margin: 0 auto 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #F4F0E8;
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+}
+
+.carousel-photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 34%;
+  max-width: 400px;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  max-height: 90%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+  filter: brightness(0.4);
+  transform: translate(-50%, -50%) scale(0.55);
+  z-index: 0;
+
+  transition:
+    transform 0.65s ease,
+    opacity 0.65s ease,
+    filter 0.65s ease;
+
+  pointer-events: none;
+}
+
+/* Center image */
+.carousel-photo.center {
+  opacity: 1;
+  filter: brightness(1);
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 5;
+  pointer-events: auto;
+  box-shadow: 0 18px 40px rgba(45, 38, 25, 0.18);
+}
+
+/* Image immediately to the left */
+.carousel-photo.left {
+  opacity: 0.7;
+  filter: brightness(0.65);
+  transform: translate(-135%, -50%) scale(0.76) rotateY(10deg);
+  z-index: 3;
+}
+
+/* Image immediately to the right */
+.carousel-photo.right {
+  opacity: 0.7;
+  filter: brightness(0.65);
+  transform: translate(35%, -50%) scale(0.76) rotateY(-10deg);
+  z-index: 3;
+}
+
+/* Far-left image */
+.carousel-photo.far-left {
+  opacity: 0.35;
+  filter: brightness(0.4);
+  transform: translate(-205%, -50%) scale(0.58) rotateY(16deg);
+  z-index: 1;
+}
+
+/* Far-right image */
+.carousel-photo.far-right {
+  opacity: 0.35;
+  filter: brightness(0.4);
+  transform: translate(105%, -50%) scale(0.58) rotateY(-16deg);
+  z-index: 1;
+}
+
+/* Arrow buttons */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(50, 45, 35, 0.35);
+  border-radius: 50%;
+
+  background: rgba(244, 240, 232, 0.85);
+  color: #222222;
+  font-size: 24px;
+  line-height: 1;
+
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.carousel-arrow:hover {
+  background: #AAA88F;
+  color: white;
+}
+
+.carousel-arrow.prev {
+  left: 12px;
+}
+
+.carousel-arrow.next {
+  right: 12px;
+}
+
+/* Mobile layout */
+@media (max-width: 767px) {
+  .photo-carousel {
+    height: 420px;
+  }
+
+  .carousel-photo {
+    width: 52%;
+    max-height: 82%;
+  }
+
+  /* Image immediately to the left */
+  .carousel-photo.left {
+    opacity: 0.7;
+    filter: brightness(0.65);
+    transform: translate(-109%, -50%) scale(0.76) rotateY(10deg);
+    z-index: 3;
+  }
+
+  /* Image immediately to the right */
+  .carousel-photo.right {
+    opacity: 0.7;
+    filter: brightness(0.65);
+    transform: translate(9%, -50%) scale(0.76) rotateY(-10deg);
+    z-index: 3;
+  }
+
+  /* Far-left image */
+  .carousel-photo.far-left {
+    opacity: 0.35;
+    filter: brightness(0.4);
+    transform: translate(-162%, -50%) scale(0.58) rotateY(16deg);
+    z-index: 1;
+  }
+
+  /* Far-right image */
+  .carousel-photo.far-right {
+    opacity: 0.35;
+    filter: brightness(0.4);
+    transform: translate(62%, -50%) scale(0.58) rotateY(-16deg);
+    z-index: 1;
+  }
+
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .carousel-arrow.prev {
+    left: 5px;
+  }
+
+  .carousel-arrow.next {
+    right: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .carousel-photo,
+  .carousel-arrow {
+    transition: none;
+  }
+}
+
+/* Cosplay cover */
+.hero.cosplay-hero {
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+
+  position: relative;
+  background-image: url("images/cosplay-cover.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  padding: 8vw 5vw;
+  padding-bottom: 12vh;
+}
+
+.cosplay-page {
+  padding-top: 110px;
+  background: #F4F0E8;
+}
+
+.cosplay-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.cosplay-heading h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  margin-bottom: 10px;
+}
+
+.cosplay-heading p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+}
+
+@media (max-width: 767px) {
+  .hero.cosplay-hero {
+    height: 75vh;
+    min-height: 500px;
+    padding-bottom: 8vh;
+  }
+}
+
+/* Cosplay page: dropdown text color */
+.cosplay-nav .dropdown-menu {
+  background: #F4F0E8;
+  color: #454438;
+}
+
+.cosplay-nav .dropdown-menu a {
+  color: #454438;
+}
+
+.cosplay-nav .dropdown-menu a:hover {
+  background: #E5E0D3;
+  color: #454438;
+}
+
+
+/* Cosplay slideshow */
+.cosplay-slideshow {
+  width: 100%;
+  height: calc(100vh - 220px);
+  min-height: 280px;
+  max-height: 650px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-stage {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-stage img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+@media (max-width: 767px) {
+  .cosplay-slideshow {
+    height: 55vh;
+    min-height: 250px;
+    padding: 0 10px;
+  }
+}
+
+/* Chinese Culture cover */
+.culture-hero {
+  width: 100%;
+  padding: 0 10%;
+  padding-top: 100px;
+  background: #d8c8a5;
+}
+
+.chinese-culture-page {
+  background-color: #D8C8A5;
+}
+
+.culture-hero-image {
+  width: 100%;
+  height: 85vh;
+  min-height: 600px;
+  position: relative;
+
+  background-image: url("images/culture-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  padding: 0 30px 10vh;
+}
+
+.culture-hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.culture-hero-content h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(32px, 4.5vw, 64px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.culture-hero-content p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  color: white;
+}
+
+/* Chinese Culture navigation */
+.culture-nav,
+.culture-nav nav a,
+.culture-nav .logo {
+  color: #222222;
+}
+
+.culture-nav nav a:hover {
+  color: #777363;
+}
+
+/* Dropdown remains readable */
+.culture-nav .dropdown-menu {
+  background: #F4F0E8;
+}
+
+.culture-nav .dropdown-menu a {
+  color: #454438;
+}
+
+.culture-nav .dropdown-menu a:hover {
+  background: #E5E0D3;
+  color: #454438;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .culture-hero {
+    padding: 80px 4% 0;
+  }
+
+  .culture-hero-image {
+    height: 65vh;
+    min-height: 400px;
+    padding: 0 15px 7vh;
+  }
+
+  .culture-hero-content h1 {
+    font-size: 32px;
+    letter-spacing: 0.05em;
+  }
+
+  .culture-hero-content p {
+    font-size: 16px;
+  }
+}
+
+/* Chinese Culture two-photo gallery */
+.chinese-culture-page .culture-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 30px;
+
+  background-color: #D8C8A5;
+}
+
+.chinese-culture-page .culture-gallery-item {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.chinese-culture-page .culture-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .chinese-culture-page .culture-gallery {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    padding: 35px 25px;
+    gap: 24px;
+  }
+}
+
+/* Chinese Culture footer */
+.chinese-culture-page footer {
+  background-color: #D8C8A5;
+}
+
+/* Portrait page cover */
+.portrait-hero {
+  background-image: url("images/portrait-cover.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Portrait Gallery */
+.portrait-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 30px;
+
+  background-color: #F4F0E8;
+}
+
+.portrait-gallery-item {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.portrait-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .portrait-gallery {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    padding: 35px 25px;
+    gap: 24px;
+  }
+}
+
+/* Vintage cover */
+.vintage-page {
+  background-color: #D8C8A5;
+}
+
+.vintage-hero {
+  width: 100%;
+  padding: 100px 10% 0;
+  background: #D8C8A5;
+}
+
+.vintage-hero-image {
+  width: 100%;
+  height: 85vh;
+  min-height: 600px;
+  position: relative;
+
+  background-image: url("images/vintage-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  padding: 0 30px 10vh;
+}
+
+.vintage-hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.vintage-hero-content h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(32px, 4.5vw, 64px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.vintage-hero-content p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  color: white;
+}
+
+/* Vintage footer */
+.vintage-page footer {
+  background-color: #D8C8A5;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .vintage-hero {
+    padding: 80px 4% 0;
+  }
+
+  .vintage-hero-image {
+    height: 65vh;
+    min-height: 400px;
+    padding: 0 15px 7vh;
+  }
+
+  .vintage-hero-content h1 {
+    font-size: 32px;
+    letter-spacing: 0.05em;
+  }
+
+  .vintage-hero-content p {
+    font-size: 16px;
+  }
+}
+
+/* Vintage Gallery */
+.vintage-page .vintage-gallery {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  background-color: #D8C8A5;
+}
+
+
+/* Vintage Gallery */
+.vintage-page .vintage-gallery {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr;
+  gap: 16px;
+
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  box-sizing: border-box;
+  background-color: #D8C8A5;
+}
+
+.vintage-page .vintage-gallery-item {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.vintage-page .vintage-landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.vintage-page .vintage-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.vintage-page .vintage-gallery-item img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .vintage-page .vintage-gallery {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 30px 20px;
+  }
+
+  .vintage-page .vintage-landscape {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+
+/* =========================
+   Contact Page
+========================= */
+
+.contact-page {
+  background-color: #F4F0E8;
+}
+
+/* Contact cover background */
+.contact-page .contact-hero {
+  width: 100%;
+  min-height: 100vh;
+  padding: 120px 24px 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image:
+    linear-gradient(rgba(30, 27, 22, 0.22),
+      rgba(30, 27, 22, 0.22)),
+    url("images/contact-cover.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-sizing: border-box;
+}
+
+/* Center contact card */
+.contact-page .contact-card {
+  width: 100%;
+  max-width: 560px;
+  padding: 55px 50px;
+
+  background: rgba(244, 240, 232, 0.91);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-sizing: border-box;
+
+  text-align: center;
+  color: #353229;
+}
+
+/* Small heading */
+.contact-page .contact-eyebrow {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  margin-bottom: 18px;
+  color: #82765F;
+}
+
+/* Main title */
+.contact-page .contact-card h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(38px, 5vw, 56px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+
+/* Decorative divider */
+.contact-page .contact-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto 22px;
+  color: #9B8A68;
+}
+
+.contact-page .contact-divider::before,
+.contact-page .contact-divider::after {
+  content: "";
+  width: 55px;
+  height: 1px;
+  background-color: #B8AA8E;
+}
+
+/* Description */
+.contact-page .contact-description {
+  max-width: 350px;
+  margin: 0 auto 32px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  line-height: 1.7;
+  color: #625C4F;
+}
+
+/* Contact information */
+.contact-page .contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+.contact-page .contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.contact-page .contact-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: #8B7A5D;
+}
+
+.contact-page .contact-item a {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  color: #353229;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.contact-page .contact-item a:hover {
+  color: #95805C;
+}
+
+/* Bottom text */
+.contact-page .contact-note {
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid #D8CEBC;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+  color: #77705F;
+}
+
+/* Footer */
+.contact-page footer {
+  background-color: #F4F0E8;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .contact-page .contact-hero {
+    min-height: 100vh;
+    padding: 100px 18px 40px;
+  }
+
+  .contact-page .contact-card {
+    max-width: 460px;
+    padding: 40px 24px;
+  }
+
+  .contact-page .contact-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .contact-page .contact-description {
+    font-size: 17px;
+  }
+
+  .contact-page .contact-item a {
+    font-size: 17px;
+  }
+}
+
+/* Contact Page Footer */
+.contact-page footer {
+  background-color: #D8C8A5;
+  color: #3A3329;
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-page .footer-links a {
+  color: #3A3329;
+}
+
+.contact-page .footer-decoration {
+  color: #3A3329;
+}
+
+
+/* ========================================
+   EXPERIMENT PAGE
+   Vintage Editorial / Self-Portrait
+======================================== */
+
+.experiment-page {
+  background-color: #F4F0E8;
+  color: #30291F;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.experiment-page main {
+  width: 100%;
+}
+
+/* Editorial Introduction */
+
+.experiment-page .experiment-intro {
+  padding: 155px 24px 85px;
+  text-align: center;
+  background-color: #D8C8A5;
+}
+
+.experiment-page .experiment-kicker {
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 22px;
+  color: #685944;
+}
+
+.experiment-page .experiment-intro h1 {
+  font-size: clamp(48px, 7vw, 92px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+
+.experiment-page .experiment-subtitle {
+  font-size: clamp(17px, 2vw, 22px);
+  font-style: italic;
+  color: #685944;
+}
+
+.experiment-page .experiment-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 32px auto;
+}
+
+.experiment-page .experiment-ornament span:not(.experiment-star) {
+  width: 65px;
+  height: 1px;
+  background-color: #9B896C;
+}
+
+.experiment-page .experiment-star {
+  font-size: 18px;
+  color: #78654B;
+}
+
+.experiment-page .experiment-description {
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #504535;
+}
+
+.experiment-page .experiment-edition {
+  margin-top: 30px;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #78654B;
+}
+
+
+/* Featured Self-Portrait */
+
+.experiment-page .experiment-feature {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 100px 40px;
+  display: grid;
+  grid-template-columns: 1.35fr 0.8fr;
+  align-items: center;
+  gap: 75px;
+}
+
+.experiment-page .experiment-feature-image {
+  position: relative;
+  min-width: 0;
+}
+
+.experiment-page .experiment-feature-image img {
+  display: block;
+  width: 100%;
+  height: 570px;
+  object-fit: cover;
+}
+
+.experiment-page .experiment-image-number {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  padding: 8px 11px;
+  background-color: rgba(244, 240, 232, 0.9);
+  color: #30291F;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.experiment-page .experiment-feature-text {
+  border-top: 1px solid #B7A587;
+  padding-top: 25px;
+}
+
+.experiment-page .experiment-section-label {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: #8A7658;
+  margin-bottom: 20px;
+}
+
+.experiment-page .experiment-feature-text h2,
+.experiment-page .experiment-ending-heading h2 {
+  font-size: clamp(35px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.experiment-page .experiment-feature-text>p:not(.experiment-section-label):not(.experiment-side-note) {
+  font-size: 19px;
+  line-height: 1.85;
+  color: #625746;
+}
+
+.experiment-page .experiment-side-note {
+  border-left: 1px solid #B7A587;
+  padding-left: 17px;
+  margin-top: 30px;
+  font-size: 16px;
+  font-style: italic;
+  color: #8A7658;
+  line-height: 1.7;
+}
+
+
+/* Two Editorial Portraits */
+
+.experiment-page .experiment-pair {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 40px 110px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.experiment-page .experiment-pair-right {
+  margin-top: 100px;
+}
+
+.experiment-page .experiment-pair-item {
+  min-width: 0;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #D8CDBA;
+}
+
+.experiment-page .experiment-pair-image {
+  overflow: hidden;
+  background-color: #E4DCCB;
+}
+
+.experiment-page .experiment-pair-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.experiment-page .experiment-pair-item:hover .experiment-pair-image img {
+  transform: scale(1.035);
+}
+
+.experiment-page .experiment-photo-index {
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #8A7658;
+}
+
+.experiment-page .experiment-pair-item h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.experiment-page .experiment-caption {
+  max-width: 350px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #6E6250;
+}
+
+
+/* Editorial Quote */
+
+.experiment-page .experiment-quote {
+  padding: 75px 24px 80px;
+  text-align: center;
+  background-color: #E8E0D1;
+}
+
+.experiment-page .experiment-quote-mark {
+  display: block;
+  font-size: 68px;
+  line-height: 0.8;
+  color: #9B896C;
+}
+
+.experiment-page .experiment-quote>p {
+  max-width: 720px;
+  margin: 20px auto;
+  font-size: clamp(29px, 4vw, 46px);
+  line-height: 1.35;
+  font-style: italic;
+  color: #493E30;
+}
+
+.experiment-page .experiment-quote-credit {
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: #8A7658;
+}
+
+
+/* Closing Statement */
+
+.experiment-page .experiment-ending {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 40px 105px;
+  text-align: center;
+  border-top: 1px solid #D8CDBA;
+}
+
+.experiment-page .experiment-ending-heading {
+  margin-bottom: 20px;
+}
+
+.experiment-page .experiment-ending-heading .experiment-section-label {
+  margin-bottom: 15px;
+}
+
+.experiment-page .experiment-ending-heading h2 {
+  margin-bottom: 15px;
+}
+
+.experiment-page .experiment-ending-caption {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.8;
+  color: #6E6250;
+}
+
+
+/* Experiment Footer */
+
+.experiment-page .experiment-footer {
+  background-color: #D8C8A5;
+  color: #493E30;
+  padding: 35px 20px 25px;
+  text-align: center;
+}
+
+.experiment-page .experiment-footer .footer-decoration {
+  margin-bottom: 18px;
+  color: #78654B;
+}
+
+.experiment-page .experiment-footer .footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 35px;
+}
+
+.experiment-page .experiment-footer .footer-links a {
+  color: #493E30;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.experiment-page .experiment-footer .footer-links a:hover {
+  opacity: 0.65;
+}
+
+.experiment-page .experiment-copyright {
+  margin-top: 25px;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #78654B;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .experiment-page .experiment-feature {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 35px;
+    padding: 75px 25px;
+  }
+
+  .experiment-page .experiment-feature-image img {
+    height: 450px;
+  }
+
+  .experiment-page .experiment-pair {
+    gap: 35px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .experiment-page .experiment-pair-right {
+    margin-top: 65px;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .experiment-page .experiment-intro {
+    padding: 125px 22px 65px;
+  }
+
+  .experiment-page .experiment-intro h1 {
+    letter-spacing: -0.5px;
+  }
+
+  .experiment-page .experiment-description {
+    font-size: 16px;
+  }
+
+  .experiment-page .experiment-feature {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 55px 22px 70px;
+  }
+
+  .experiment-page .experiment-feature-image img {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .experiment-page .experiment-feature-text h2 {
+    font-size: 40px;
+  }
+
+  .experiment-page .experiment-pair {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    padding: 10px 22px 70px;
+  }
+
+  .experiment-page .experiment-pair-right {
+    margin-top: 0;
+  }
+
+  .experiment-page .experiment-pair-item h3 {
+    font-size: 29px;
+  }
+
+  .experiment-page .experiment-quote {
+    padding: 60px 22px;
+  }
+
+  .experiment-page .experiment-ending {
+    padding: 70px 22px;
+  }
+
+  .experiment-page .experiment-footer .footer-links {
+    gap: 18px;
   }
 }
