@@ -17,31 +17,43 @@
 </head>
 
 <body>
-  <header class="nav cosplay-nav">
-    <nav class="nav-left">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <div class="nav-dropdown">
-        <a href="portfolio.html" class="nav-dropdown-link">
-          Portfolio <span class="dropdown-arrow">⌄</span>
-        </a>
 
-        <div class="dropdown-menu">
-          <a href="cosplay.html">Cosplay</a>
-          <a href="chinese-culture.html">Chinese Culture</a>
-          <a href="portrait.html">Portrait</a>
-          <a href="vintage.html">Vintage</a>
-        </div>
-      </div>
-    </nav>
+  <header class="nav investment-nav">
 
     <a class="logo" href="index.html">JORSAGA PHOTO</a>
 
-    <nav class="nav-right">
-      <a href="investment.html">Investment</a>
-      <a href="experiment.html">Experiment</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+      aria-controls="mobile-navigation">
+      ☰
+    </button>
+
+    <div class="mobile-navigation" id="mobile-navigation">
+
+      <nav class="nav-left">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="nav-dropdown">
+          <a href="/Final/portfolio.html" class="nav-dropdown-link">
+            Portfolio <span class="dropdown-arrow">⌄</span>
+          </a>
+
+          <div class="dropdown-menu">
+            <a href="cosplay.html">Cosplay</a>
+            <a href="chinese-culture.html">Chinese Culture</a>
+            <a href="portrait.html">Portrait</a>
+            <a href="vintage.html">Vintage</a>
+          </div>
+        </div>
+      </nav>
+
+      <nav class="nav-right">
+        <a href="investment.html">Investment</a>
+        <a href="experiment.html">Experiment</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
   </header>
 
   <section id="investment" class="investment">
@@ -87,7 +99,6 @@
         </ul>
 
       </div>
-
 
       <!-- Dual -->
       <div class="pricing-card">
@@ -156,4 +167,42 @@
 
     </div>
 
+    <!-- Footer -->
+    <footer>
+
+      <div class="footer-decoration">
+        <span>✦</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#top">Back to Top</a>
+        <a href="contact.html">Contact</a>
+        <a href="#">FAQ</a>
+      </div>
+
+    </footer>
+
   </section>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".nav");
+
+    if (menuButton && navigation) {
+      menuButton.addEventListener("click", function () {
+        const isOpen = navigation.classList.toggle("menu-open");
+
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+
+        menuButton.textContent = isOpen ? "✕" : "☰";
+      });
+    }
+  </script>
+
+</body>
+
+</html>
