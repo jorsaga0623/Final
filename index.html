@@ -21,7 +21,18 @@
         <nav class="nav-left">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="portfolio.html">Portfolio</a>
+            <div class="nav-dropdown">
+                <a href="portfolio.html" class="nav-dropdown-link">
+                    Portfolio <span class="dropdown-arrow">⌄</span>
+                </a>
+
+                <div class="dropdown-menu">
+                    <a href="cosplay.html">Cosplay</a>
+                    <a href="chinese-culture.html">Chinese Culture</a>
+                    <a href="portrait.html">Portrait</a>
+                    <a href="vintage.html">Vintage</a>
+                </div>
+            </div>
         </nav>
 
         <a class="logo" href="index.html">JORSAGA PHOTO</a>
@@ -40,6 +51,94 @@
             <h1>Captured your moment in light.</h1>
             <a class="button" href="#portfolio">Explore the work</a>
         </div>
+    </section>
+
+    <section id="about" class="about">
+
+        <div class="self-image">
+            <img src="images/self.jpg" alt="Portrait of Jorsaga">
+        </div>
+
+        <div class="introduction">
+            <h2>Hello, I am June</h2>
+
+            <p class="about-opening">
+                Some moments are impossible to recreate.
+            </p>
+
+            <p>
+                I’m drawn to the space between a story and a frame —
+                where a character exists, a world unfolds,
+                and a fleeting moment quietly becomes a memory.
+            </p>
+        </div>
+
+    </section>
+
+    <section id="portfolio" class="portfolio">
+
+        <div class="portfolio-item">
+            <div class="portfolio-text">
+                <h3>I. Cosplay</h3>
+            </div>
+
+            <div class="portfolio-card cosplay slideshow">
+                <img src="images/cosplay-1.jpg" alt="Cosplay photography">
+                <img src="images/cosplay-2.jpg" alt="Cosplay photography">
+                <img src="images/cosplay-3.jpg" alt="Cosplay photography">
+                <img src="images/cosplay-4.jpg" alt="Cosplay photography">
+            </div>
+        </div>
+
+
+        <div class="portfolio-item">
+            <div class="portfolio-text">
+                <h3>II. Chinese Culture</h3>
+            </div>
+
+            <div class="portfolio-card chinese-culture slideshow">
+                <img src="images/chinese-culture-1.jpg" alt="Chinese culture photography">
+                <img src="images/chinese-culture-2.jpg" alt="Chinese culture photography">
+                <img src="images/chinese-culture-3.jpg" alt="Chinese culture photography">
+                <img src="images/chinese-culture-4.jpg" alt="Chinese culture photography">
+            </div>
+        </div>
+
+
+        <div class="portfolio-item">
+            <div class="portfolio-text">
+                <h3>III. Portrait</h3>
+            </div>
+
+            <div class="portfolio-card portrait slideshow">
+                <img src="images/portrait-1.jpg" alt="Portrait photography">
+                <img src="images/portrait-2.jpg" alt="Portrait photography">
+                <img src="images/portrait-3.jpg" alt="Portrait photography">
+                <img src="images/portrait-4.jpg" alt="Portrait photography">
+            </div>
+        </div>
+
+
+        <div class="portfolio-item">
+            <div class="portfolio-text">
+                <h3>IV. Vintage</h3>
+            </div>
+
+            <div class="portfolio-card vintage slideshow">
+                <img src="images/vintage-1.jpg" alt="Vintage photography">
+                <img src="images/vintage-2.jpg" alt="Vintage photography">
+                <img src="images/vintage-3.jpg" alt="Vintage photography">
+                <img src="images/vintage-4.jpg" alt="Vintage photography">
+            </div>
+        </div>
+
+        <div class="portfolio-grid">
+            <!-- Your four portfolio items -->
+        </div>
+
+        <p class="portfolio-instruction">
+            Explore the collections — hover over an image to view the slideshow.
+        </p>
     </section>
 
     <section class="parallax-section">
@@ -81,7 +180,30 @@
 
         });
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://malsup.github.io/jquery.cycle2.js"></script>
 
+    <script>
+        $(document).ready(function () {
+
+            $(".slideshow").cycle({
+                fx: "fade",
+                timeout: 1000,
+                speed: 700,
+                paused: true
+            });
+
+            $(".slideshow").hover(
+                function () {
+                    $(this).cycle("resume");
+                },
+                function () {
+                    $(this).cycle("pause");
+                }
+            );
+
+        });
+    </script>
 </body>
 
 </html>
