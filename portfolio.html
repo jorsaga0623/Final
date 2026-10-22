@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>JORSGA PHOTO</title>
+  <title>JORSAGA PHOTO</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,55 +16,86 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-  <header class="nav portfolio-nav">
-    <nav class="nav-left">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <div class="nav-dropdown">
-        <a href="portfolio.html" class="nav-dropdown-link">
-          Portfolio <span class="dropdown-arrow">⌄</span>
-        </a>
+<body id="top">
 
-        <div class="dropdown-menu">
-          <a href="cosplay.html">Cosplay</a>
-          <a href="chinese-culture.html">Chinese Culture</a>
-          <a href="portrait.html">Portrait</a>
-          <a href="vintage.html">Vintage</a>
-        </div>
-      </div>
-    </nav>
+  <!-- Navigation -->
+  <header class="nav portfolio-nav">
 
     <a class="logo" href="index.html">JORSAGA PHOTO</a>
 
-    <nav class="nav-right">
-      <a href="investment.html">Investment</a>
-      <a href="experiment.html">Experiment</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+      aria-controls="mobile-navigation">
+      ☰
+    </button>
+
+    <div class="mobile-navigation" id="mobile-navigation">
+
+      <nav class="nav-left">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="nav-dropdown">
+          <a href="portfolio.html" class="nav-dropdown-link">
+            Portfolio <span class="dropdown-arrow">⌄</span>
+          </a>
+
+          <div class="dropdown-menu">
+            <a href="cosplay.html">Cosplay</a>
+            <a href="chinese-culture.html">Chinese Culture</a>
+            <a href="portrait.html">Portrait</a>
+            <a href="vintage.html">Vintage</a>
+          </div>
+        </div>
+      </nav>
+
+      <nav class="nav-right">
+        <a href="investment.html">Investment</a>
+        <a href="experiment.html">Experiment</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+
   </header>
 
-  <section class="hero portrait-hero">
-    <div class="hero-overlay"></div>
+  <!-- Portfolio Heading -->
+  <main class="portfolio-page">
 
-    <div class="hero-content">
-      <h1>PORTRAIT</h1>
-      <p>Your Moment.Your Story.</p>
+    <section class="portfolio-heading">
+      <h1>PORTFOLIO</h1>
+      <p>Stories captured in light.</p>
+    </section>
+
+  </main>
+
+  <!-- Photography Carousel -->
+  <section class="photo-carousel" aria-label="Photography portfolio">
+
+    <button class="carousel-arrow prev" type="button" aria-label="Previous photo">
+      &#8592;
+    </button>
+
+    <div class="carousel-track">
+
+      <img src="images/cosplay-1.jpg" class="carousel-photo" alt="Cosplay photography">
+
+      <img src="images/chinese-culture-1.jpg" class="carousel-photo" alt="Chinese culture photography">
+
+      <img src="images/portrait-1.jpg" class="carousel-photo" alt="Portrait photography">
+
+      <img src="images/vintage-1.jpg" class="carousel-photo" alt="Vintage photography">
+
+      <img src="images/cosplay-2.jpg" class="carousel-photo" alt="Cosplay portrait photography">
+
     </div>
+
+    <button class="carousel-arrow next" type="button" aria-label="Next photo">
+      &#8594;
+    </button>
+
   </section>
-  <!-- Portrait Gallery -->
-  <section class="portrait-gallery">
 
-    <div class="portrait-gallery-item">
-      <img src="images/portrait-3.jpg" alt="Portrait photography">
-    </div>
-
-    <div class="portrait-gallery-item">
-      <img src="images/portrait-4.jpg" alt="Portrait photography">
-    </div>
-
-  </section>
-
+  <!-- Footer -->
   <footer>
 
     <div class="footer-decoration">
@@ -72,16 +103,87 @@
     </div>
 
     <div class="footer-links">
-
-      <a href="#home">Back to Top</a>
-
-      <a href="#contact">Contact</a>
-
+      <a href="#top">Back to Top</a>
+      <a href="contact.html">Contact</a>
       <a href="#">FAQ</a>
-
     </div>
 
   </footer>
+
+  <!-- Mobile Navigation Script -->
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".nav");
+
+    if (menuButton && navigation) {
+      menuButton.addEventListener("click", function () {
+        const isOpen = navigation.classList.toggle("menu-open");
+
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+
+        menuButton.textContent = isOpen ? "✕" : "☰";
+      });
+    }
+  </script>
+
+  <!-- Portfolio Carousel Script -->
+  <script>
+    const carouselPhotos = document.querySelectorAll(".carousel-photo");
+    const prevButton = document.querySelector(".carousel-arrow.prev");
+    const nextButton = document.querySelector(".carousel-arrow.next");
+
+    let activeIndex = 0;
+
+    function updateCarousel() {
+      const total = carouselPhotos.length;
+
+      carouselPhotos.forEach((photo, index) => {
+        photo.classList.remove(
+          "center", "left", "right", "far-left", "far-right"
+        );
+
+        let distance = (index - activeIndex + total) % total;
+
+        if (distance > Math.floor(total / 2)) {
+          distance -= total;
+        }
+
+        if (distance === 0) {
+          photo.classList.add("center");
+        } else if (distance === -1) {
+          photo.classList.add("left");
+        } else if (distance === 1) {
+          photo.classList.add("right");
+        } else if (distance === -2) {
+          photo.classList.add("far-left");
+        } else if (distance === 2) {
+          photo.classList.add("far-right");
+        }
+      });
+    }
+
+    if (carouselPhotos.length > 0 && prevButton && nextButton) {
+      prevButton.addEventListener("click", () => {
+        activeIndex =
+          (activeIndex - 1 + carouselPhotos.length) % carouselPhotos.length;
+
+        updateCarousel();
+      });
+
+      nextButton.addEventListener("click", () => {
+        activeIndex = (activeIndex + 1) % carouselPhotos.length;
+
+        updateCarousel();
+      });
+
+      updateCarousel();
+    }
+  </script>
+
 </body>
 
 </html>
