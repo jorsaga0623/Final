@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>JORSGA PHOTO</title>
+  <title>JORSAGA PHOTO</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,34 +18,47 @@
 
 <body>
 
+  <!-- Navigation -->
   <header class="nav">
-    <nav class="nav-left">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <div class="nav-dropdown">
-        <a href="portfolio.html" class="nav-dropdown-link">
-          Portfolio <span class="dropdown-arrow">⌄</span>
-        </a>
-
-        <div class="dropdown-menu">
-          <a href="cosplay.html">Cosplay</a>
-          <a href="chinese-culture.html">Chinese Culture</a>
-          <a href="portrait.html">Portrait</a>
-          <a href="vintage.html">Vintage</a>
-        </div>
-      </div>
-    </nav>
 
     <a class="logo" href="index.html">JORSAGA PHOTO</a>
 
-    <nav class="nav-right">
-      <a href="investment.html">Investment</a>
-      <a href="experiment.html">Experiment</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+      aria-controls="mobile-navigation">
+      ☰
+    </button>
+
+    <div class="mobile-navigation" id="mobile-navigation">
+
+      <nav class="nav-left">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="nav-dropdown">
+          <a href="portfolio.html" class="nav-dropdown-link">
+            Portfolio <span class="dropdown-arrow">⌄</span>
+          </a>
+
+          <div class="dropdown-menu">
+            <a href="cosplay.html">Cosplay</a>
+            <a href="chinese-culture.html">Chinese Culture</a>
+            <a href="portrait.html">Portrait</a>
+            <a href="vintage.html">Vintage</a>
+          </div>
+        </div>
+      </nav>
+
+      <nav class="nav-right">
+        <a href="investment.html">Investment</a>
+        <a href="experiment.html">Experiment</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+
   </header>
 
-
+  <!-- About Section -->
   <section id="about" class="about about-page">
 
     <div class="self-image">
@@ -68,6 +81,7 @@
 
   </section>
 
+  <!-- Footer -->
   <footer>
 
     <div class="footer-decoration">
@@ -75,16 +89,33 @@
     </div>
 
     <div class="footer-links">
-
-      <a href="#home">Back to Top</a>
-
-      <a href="#contact">Contact</a>
-
+      <a href="#about">Back to Top</a>
+      <a href="contact.html">Contact</a>
       <a href="#">FAQ</a>
-
     </div>
 
   </footer>
+
+  <!-- Mobile Navigation Script -->
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".nav");
+
+    if (menuButton && navigation) {
+      menuButton.addEventListener("click", function () {
+        const isOpen = navigation.classList.toggle("menu-open");
+
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+
+        menuButton.textContent = isOpen ? "✕" : "☰";
+      });
+    }
+  </script>
+
 </body>
 
 </html>
