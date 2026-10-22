@@ -2863,3 +2863,89 @@ body:has(.about-page) {
     font-size: 27px;
   }
 }
+
+
+/* FIX: Mobile hamburger navigation */
+@media screen and (max-width: 767px) {
+
+    /* Keep only the logo and hamburger visible initially */
+    header.nav {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto !important;
+        align-items: center !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 14px 16px !important;
+    }
+
+    header.nav > .logo {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+        font-size: 18px;
+    }
+
+    header.nav > .menu-toggle {
+        display: block !important;
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        position: relative;
+        z-index: 1001;
+        background: transparent;
+        border: none;
+        color: inherit;
+        font-size: 27px;
+        cursor: pointer;
+    }
+
+    /* Hide all navigation links until the menu is opened */
+    header.nav > .mobile-navigation {
+        display: none !important;
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        margin-top: 12px;
+        padding: 20px;
+        background: #F4F0E8;
+        color: #454438;
+    }
+
+    /* Show navigation only after clicking the hamburger */
+    header.nav.menu-open > .mobile-navigation {
+        display: flex !important;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    header.nav .mobile-navigation nav {
+        display: flex !important;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        width: 100%;
+    }
+
+    header.nav .mobile-navigation a {
+        color: #454438 !important;
+    }
+
+    /* Keep the Portfolio dropdown inside the menu */
+    header.nav .mobile-navigation .dropdown-menu {
+        position: static;
+        display: none;
+        margin: 10px 0 0 12px;
+        padding: 0;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    header.nav .mobile-navigation .nav-dropdown:hover .dropdown-menu,
+    header.nav .mobile-navigation .nav-dropdown:focus-within .dropdown-menu {
+        display: block;
+    }
+}
