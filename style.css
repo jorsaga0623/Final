@@ -1471,6 +1471,62 @@ body:has(.about-page) {
 }
 
 
+/* Investment page: black navigation and footer text */
+body:has(.investment) .nav,
+body:has(.investment) .nav a,
+body:has(.investment) .nav .logo,
+body:has(.investment) footer,
+body:has(.investment) footer a {
+  color: #000000;
+}
+
+/* Keep dropdown text readable */
+body:has(.investment) .dropdown-menu,
+body:has(.investment) .dropdown-menu a {
+  color: #000000;
+}
+
+/* Hamburger button */
+body:has(.investment) .menu-toggle {
+  color: #000000;
+}
+
+
+/* Investment page footer: transparent background, black text */
+body:has(.investment) footer {
+  background: transparent !important;
+  color: #000000 !important;
+}
+
+body:has(.investment) footer a,
+body:has(.investment) footer .footer-decoration,
+body:has(.investment) footer .footer-decoration span {
+  color: #000000 !important;
+}
+
+body:has(.investment) footer .footer-links a {
+  background: transparent !important;
+}
+
+/* Investment page: force black navigation text on tablet and mobile */
+@media screen and (max-width: 1024px) {
+
+  body:has(.investment) header.investment-nav .mobile-navigation,
+  body:has(.investment) header.investment-nav .mobile-navigation nav,
+  body:has(.investment) header.investment-nav .mobile-navigation a,
+  body:has(.investment) header.investment-nav .mobile-navigation .nav-dropdown-link,
+  body:has(.investment) header.investment-nav .menu-toggle {
+    color: #000000 !important;
+  }
+
+  /* Keep the dropdown menu text black too */
+  body:has(.investment) header.investment-nav .dropdown-menu,
+  body:has(.investment) header.investment-nav .dropdown-menu a {
+    color: #000000 !important;
+  }
+}
+
+
 /* =========================
    Contact Page
 ========================= */
@@ -2864,88 +2920,87 @@ body:has(.about-page) {
   }
 }
 
-
 /* FIX: Mobile hamburger navigation */
 @media screen and (max-width: 767px) {
 
-    /* Keep only the logo and hamburger visible initially */
-    header.nav {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) auto !important;
-        align-items: center !important;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 14px 16px !important;
-    }
+  /* Keep only the logo and hamburger visible initially */
+  header.nav {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 14px 16px !important;
+  }
 
-    header.nav > .logo {
-        grid-column: 1;
-        grid-row: 1;
-        justify-self: start;
-        font-size: 18px;
-    }
+  header.nav>.logo {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    font-size: 18px;
+  }
 
-    header.nav > .menu-toggle {
-        display: block !important;
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: end;
-        position: relative;
-        z-index: 1001;
-        background: transparent;
-        border: none;
-        color: inherit;
-        font-size: 27px;
-        cursor: pointer;
-    }
+  header.nav>.menu-toggle {
+    display: block !important;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    position: relative;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 27px;
+    cursor: pointer;
+  }
 
-    /* Hide all navigation links until the menu is opened */
-    header.nav > .mobile-navigation {
-        display: none !important;
-        grid-column: 1 / -1;
-        grid-row: 2;
-        width: 100%;
-        margin-top: 12px;
-        padding: 20px;
-        background: #F4F0E8;
-        color: #454438;
-    }
+  /* Hide all navigation links until the menu is opened */
+  header.nav>.mobile-navigation {
+    display: none !important;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    margin-top: 12px;
+    padding: 20px;
+    background: #F4F0E8;
+    color: #454438;
+  }
 
-    /* Show navigation only after clicking the hamburger */
-    header.nav.menu-open > .mobile-navigation {
-        display: flex !important;
-        flex-direction: column;
-        gap: 20px;
-    }
+  /* Show navigation only after clicking the hamburger */
+  header.nav.menu-open>.mobile-navigation {
+    display: flex !important;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    header.nav .mobile-navigation nav {
-        display: flex !important;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        width: 100%;
-    }
+  header.nav .mobile-navigation nav {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
 
-    header.nav .mobile-navigation a {
-        color: #454438 !important;
-    }
+  header.nav .mobile-navigation a {
+    color: #454438 !important;
+  }
 
-    /* Keep the Portfolio dropdown inside the menu */
-    header.nav .mobile-navigation .dropdown-menu {
-        position: static;
-        display: none;
-        margin: 10px 0 0 12px;
-        padding: 0;
-        background: transparent;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-    }
+  /* Keep the Portfolio dropdown inside the menu */
+  header.nav .mobile-navigation .dropdown-menu {
+    position: static;
+    display: none;
+    margin: 10px 0 0 12px;
+    padding: 0;
+    background: transparent;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
 
-    header.nav .mobile-navigation .nav-dropdown:hover .dropdown-menu,
-    header.nav .mobile-navigation .nav-dropdown:focus-within .dropdown-menu {
-        display: block;
-    }
+  header.nav .mobile-navigation .nav-dropdown:hover .dropdown-menu,
+  header.nav .mobile-navigation .nav-dropdown:focus-within .dropdown-menu {
+    display: block;
+  }
 }
