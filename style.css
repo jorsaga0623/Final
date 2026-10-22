@@ -2058,3 +2058,651 @@ body:has(.about-page) {
     gap: 18px;
   }
 }
+
+
+/* =================================
+   Tablet: iPad and similar devices
+   601px - 1024px
+================================= */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  main,
+  section {
+    max-width: 100%;
+  }
+
+}
+
+/* =================================
+   Mobile: phones
+   600px and below
+================================= */
+@media screen and (max-width: 600px) {
+
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1 {
+    font-size: clamp(28px, 8vw, 42px);
+  }
+
+  h2 {
+    font-size: clamp(22px, 6vw, 32px);
+  }
+
+  p {
+    overflow-wrap: break-word;
+  }
+
+  main,
+  section {
+    max-width: 100%;
+  }
+
+}
+
+/* =================================
+   Small mobile phones
+   380px and below
+================================= */
+@media screen and (max-width: 380px) {
+
+  h1 {
+    font-size: 27px;
+  }
+
+  h2 {
+    font-size: 21px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+}
+
+
+
+/* =========================================================
+   FINAL RESPONSIVE OVERRIDES
+   Desktop keeps the original layout.
+   Tablet: 768px–1024px | Mobile: 481px–767px | Small phone: <=480px
+   Keep this block at the very bottom of style.css.
+========================================================= */
+
+/* 1. TABLET */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .nav {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 14px;
+    padding: 18px 3%;
+  }
+
+  .nav .logo {
+    grid-row: 1;
+    font-size: 23px;
+  }
+
+  .nav .nav-left,
+  .nav .nav-right {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  .nav .nav-left { grid-row: 2; }
+  .nav .nav-right { grid-row: 3; }
+
+  .nav nav {
+    font-size: 11px;
+    gap: 12px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(42px, 6vw, 62px);
+  }
+
+  .about {
+    gap: 38px;
+    padding: 85px 6%;
+  }
+
+  .self-image {
+    width: 38%;
+  }
+
+  .introduction {
+    padding: 0;
+  }
+
+  .introduction h2 {
+    font-size: 42px;
+  }
+
+  .about-opening {
+    white-space: normal;
+  }
+
+  .portfolio {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 70px 24px;
+    padding: 100px 5% 70px;
+  }
+
+  .portfolio-item,
+  .portfolio-card,
+  .slideshow {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .portfolio-instruction {
+    grid-column: 1 / -1;
+    left: auto;
+    transform: none;
+    width: 100%;
+    white-space: normal;
+    margin: 0;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .pricing-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .pricing-card {
+    padding: 35px 25px;
+  }
+
+  .investment-page > .service-section {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photo-carousel {
+    height: 470px;
+    max-width: 100%;
+  }
+
+  .experiment-page .experiment-feature {
+    grid-template-columns: 1fr 0.9fr;
+    gap: 35px;
+    padding: 75px 28px;
+  }
+
+  .experiment-page .experiment-feature-image img {
+    height: 460px;
+  }
+
+  .experiment-page .experiment-pair {
+    gap: 35px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+}
+
+/* 2. MOBILE PHONES */
+@media screen and (max-width: 767px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+  }
+
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 12px;
+  }
+
+  .nav .logo {
+    order: -1;
+    font-size: 21px;
+    letter-spacing: 0.09em;
+    line-height: 1.2;
+  }
+
+  .nav .nav-left,
+  .nav .nav-right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 9px 14px;
+    width: 100%;
+  }
+
+  .nav nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px 14px;
+    font-size: 10px;
+    letter-spacing: 0.07em;
+  }
+
+  .dropdown-menu {
+    left: 50%;
+    transform: translate(-50%, 8px);
+    min-width: 150px;
+  }
+
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu {
+    transform: translate(-50%, 0);
+  }
+
+  .hero {
+    height: 78vh;
+    min-height: 520px;
+    padding: 0 22px 9vh;
+    align-items: flex-end;
+    background-position: center;
+  }
+
+  .hero-content h1 {
+    max-width: 100%;
+    font-size: clamp(34px, 8vw, 48px);
+    line-height: 1.08;
+  }
+
+  .about {
+    flex-direction: column;
+    gap: 30px;
+    padding: 65px 7%;
+  }
+
+  .self-image {
+    width: min(100%, 360px);
+    flex-shrink: 1;
+  }
+
+  .introduction {
+    width: 100%;
+    max-width: 520px;
+    padding: 0;
+  }
+
+  .introduction h2 {
+    font-size: clamp(34px, 8vw, 44px);
+    margin-bottom: 18px;
+  }
+
+  .introduction p {
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+  .about-opening {
+    font-size: 20px !important;
+    white-space: normal;
+  }
+
+  .portfolio {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 62px 16px;
+    padding: 85px 5% 55px;
+  }
+
+  .portfolio-item,
+  .portfolio-card,
+  .slideshow {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .portfolio-text {
+    top: -42px;
+  }
+
+  .portfolio-text h3 {
+    font-size: clamp(19px, 4.5vw, 27px);
+    line-height: 1.1;
+  }
+
+  .portfolio-instruction {
+    grid-column: 1 / -1;
+    left: auto;
+    transform: none;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    white-space: normal;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .parallax-section {
+    height: 300px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 20px 28px;
+  }
+
+  .investment {
+    padding: 85px 6%;
+  }
+
+  .investment-heading {
+    margin-bottom: 45px;
+  }
+
+  .investment-heading h2,
+  .investment-intro h1 {
+    font-size: clamp(38px, 8vw, 48px);
+  }
+
+  .pricing-container {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .pricing-card {
+    padding: 30px 22px;
+  }
+
+  .pricing-title h3 {
+    font-size: 30px;
+  }
+
+  .price-row {
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .price-row span:last-child {
+    font-size: 22px;
+    white-space: nowrap;
+  }
+
+  .investment-page {
+    padding: 100px 6% 55px;
+  }
+
+  .investment-page > .service-section {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .investment-page .service-details h2 {
+    font-size: 32px;
+  }
+
+  .investment-page .note-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .portfolio-page {
+    padding-top: 115px;
+  }
+
+  .portfolio-heading {
+    padding: 0 18px;
+  }
+
+  .portfolio-heading h1 {
+    font-size: clamp(30px, 7vw, 40px);
+    letter-spacing: 0.12em;
+  }
+
+  .portfolio-heading p {
+    font-size: 16px;
+  }
+
+  .photo-carousel {
+    height: 390px;
+    margin-bottom: 40px;
+  }
+
+  .carousel-photo {
+    width: 55%;
+    max-height: 82%;
+  }
+
+  .cosplay-page {
+    padding-top: 95px;
+  }
+
+  .cosplay-heading,
+  .culture-hero-content,
+  .vintage-hero-content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .cosplay-heading h1 {
+    font-size: 34px;
+  }
+
+  .cosplay-slideshow {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .culture-hero,
+  .vintage-hero {
+    padding: 85px 4% 0;
+  }
+
+  .culture-hero-image,
+  .vintage-hero-image {
+    height: 65vh;
+    min-height: 380px;
+    padding: 0 14px 7vh;
+  }
+
+  .culture-hero-content h1,
+  .vintage-hero-content h1 {
+    font-size: clamp(30px, 7vw, 40px);
+    letter-spacing: 0.04em;
+  }
+
+  .culture-hero-content p,
+  .vintage-hero-content p {
+    font-size: 16px;
+  }
+
+  .chinese-culture-page .culture-gallery,
+  .portrait-gallery {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    padding: 35px 6%;
+    gap: 22px;
+  }
+
+  .vintage-page .vintage-gallery {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 30px 6%;
+  }
+
+  .contact-page .contact-hero {
+    min-height: 100vh;
+    padding: 115px 16px 35px;
+  }
+
+  .contact-page .contact-card {
+    padding: 38px 22px;
+  }
+
+  .contact-page .contact-item a {
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .experiment-page .experiment-intro {
+    padding: 145px 22px 60px;
+  }
+
+  .experiment-page .experiment-intro h1 {
+    font-size: clamp(42px, 10vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+  }
+
+  .experiment-page .experiment-description {
+    font-size: 16px;
+  }
+
+  .experiment-page .experiment-feature {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 55px 22px 65px;
+  }
+
+  .experiment-page .experiment-feature-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .experiment-page .experiment-feature-text h2,
+  .experiment-page .experiment-ending-heading h2 {
+    font-size: clamp(32px, 8vw, 42px);
+  }
+
+  .experiment-page .experiment-feature-text > p:not(.experiment-section-label):not(.experiment-side-note) {
+    font-size: 17px;
+  }
+
+  .experiment-page .experiment-pair {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    padding: 10px 22px 65px;
+  }
+
+  .experiment-page .experiment-pair-right {
+    margin-top: 0;
+  }
+
+  .experiment-page .experiment-pair-item h3 {
+    font-size: 28px;
+  }
+
+  .experiment-page .experiment-quote,
+  .experiment-page .experiment-ending {
+    padding: 55px 22px;
+  }
+}
+
+/* 3. SMALL PHONES */
+@media screen and (max-width: 480px) {
+  .nav {
+    gap: 8px;
+    padding: 12px 8px;
+  }
+
+  .nav .logo {
+    font-size: 18px;
+  }
+
+  .nav nav {
+    gap: 8px 10px;
+    font-size: 9px;
+    letter-spacing: 0.04em;
+  }
+
+  .hero {
+    min-height: 480px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(30px, 8.5vw, 38px);
+  }
+
+  .portfolio {
+    grid-template-columns: 1fr;
+    gap: 58px;
+    padding: 80px 8% 45px;
+  }
+
+  .portfolio-item,
+  .portfolio-card,
+  .slideshow {
+    width: 100%;
+  }
+
+  .portfolio-text {
+    top: -38px;
+  }
+
+  .portfolio-text h3 {
+    font-size: 25px;
+  }
+
+  .portfolio-instruction {
+    grid-column: 1;
+    font-size: 11px;
+  }
+
+  .photo-carousel {
+    height: 330px;
+  }
+
+  .carousel-photo {
+    width: 58%;
+    max-height: 78%;
+  }
+
+  .investment-page .service-price {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .investment-page .service-price strong {
+    font-size: 22px;
+  }
+
+  .footer-links {
+    gap: 16px 20px;
+  }
+
+  .footer-links a {
+    font-size: 10px;
+  }
+
+  .contact-page .contact-card {
+    padding: 32px 18px;
+  }
+
+  .contact-page .contact-card h1 {
+    font-size: 38px;
+  }
+}
